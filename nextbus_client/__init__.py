@@ -9,6 +9,6 @@ from .client import Client
 from .agency import Agency
 
 __title__ = 'nextbus_client'
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 __author__ = 'Adam Duston'
 __license__ = 'BSD-3-Clause'

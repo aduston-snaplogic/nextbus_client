@@ -7,22 +7,22 @@ License: BSD-3-Clause
 
 class Agency(object):
     def __init__(self, **kwargs):
-        self.tag = kwargs.get('tag')
-        self.title = kwargs.get('title')
-        self.region_title = kwargs.get('regionTitle')
-        self.short_title = kwargs.get('shortTitle')
+        self.tag = kwargs.get('tag', '')
+        self.title = kwargs.get('title', '')
+        self.region_title = kwargs.get('regionTitle', '')
+        self.short_title = kwargs.get('shortTitle', '')
     
     def __init__(self, element):
         """
         Parse values form XML element.
         :param element: xml.etree.ElementTree.Element for the Agency
         """
-        self.tag = element.get('tag')
-        self.title = element.get('title')
-        self.region_title = element.get('regionTitle')
-        self.short_title = element.get('shortTitle')
+        self.tag = element.get('tag', '')
+        self.title = element.get('title', '')
+        self.region_title = element.get('regionTitle', '')
+        self.short_title = element.get('shortTitle', '')
     
-    def _dict__(self):
+    def to_dict(self):
         """
         Parse the Agency to a dictionary.
 
