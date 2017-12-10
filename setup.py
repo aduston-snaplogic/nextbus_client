@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='nextbus_client',
-    version='0.0.1',
+    version='0.0.2',
     author="Adam Duston",
     author_email="adamduston@gmail.com",
     url="https://github.com/compybara/nextbus_client",
