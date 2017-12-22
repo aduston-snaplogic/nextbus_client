@@ -1,5 +1,5 @@
 """
-agency.py - Class models an Agency from the NextBus API
+route.py - Class models a Route as returned by the Nexbus API's routeList command.
 
 Author: Adam Duston
 License: BSD-3-Clause
@@ -7,11 +7,11 @@ License: BSD-3-Clause
 from .utilities import validate_xml_element
 
 
-class Agency(object):
+class Route(object):
     """
-    Class models and Agency for the agencyList api command.
+    Class models a Route for the routeList command
     """
-    ELEMENT_TAG = 'agency'
+    ELEMENT_TAG = 'route'
 
     def __init__(self, **kwargs):
         """
@@ -28,16 +28,14 @@ class Agency(object):
 
         self.tag = source.get('tag', '')
         self.title = source.get('title', '')
-        self.region_title = source.get('regionTitle', '')
         self.short_title = source.get('shortTitle', '')
 
     def to_dict(self):
         """
-        Parse the Agency to a dictionary.
+        Parse the Route to a dictionary.
 
-        :return: Dictionary of Agency attributes
+        :return: Dictionary of Route attributes
         """
         return {'tag': self.tag,
                 'title': self.title,
-                'regionTitle': self.region_title,
                 'shortTitle': self.short_title}
