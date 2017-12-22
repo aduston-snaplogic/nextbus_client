@@ -84,7 +84,7 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of cond
 ## Versioning
 
 This project follows the [SemVer](http://semver.org/) specification for versioning. 
-Available versions are stored as [tags on this repository](https://github.com/compybara/nextbus-client/tags). 
+Available versions are stored as [tags on this repository](https://github.com/compybara/nextbus_client/tags). 
 
 ## Authors
 
