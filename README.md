@@ -1,4 +1,4 @@
-# nextbus_client
+# nextbus_client [![Build Status](https://travis-ci.org/compybara/nextbus_client.svg?branch=master)](https://travis-ci.org/compybara/nextbus_client)
 
 This module attempts to implement a native Python 3 client for interacting with the Nexbus service's Public XML Feed.
 
