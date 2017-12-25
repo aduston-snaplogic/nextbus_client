@@ -4,12 +4,12 @@ setup_helpers.py - Define some custom commands and helper methods for setup.py
 Author: Adam Duston
 License: BSD-3-Clause
 """
-
+import subprocess
+import re
 from distutils.cmd import Command
 from distutils.log import INFO
 from os import path, getcwd
-import subprocess
-import re
+from setuptools.command.test import test as TestCommand
 
 
 class PylintCommand(Command):
@@ -69,7 +69,7 @@ class PylintCommand(Command):
         subprocess.call(command)
 
 
-class BehaveCommand(Command):
+class BehaveCommand(TestCommand):
     """
     Custom command for running behave with setuptools.
     """
@@ -88,7 +88,7 @@ class BehaveCommand(Command):
 
     def initialize_options(self):
         """Set default values for options."""
-        pass
+        TestCommand.initialize_options(self)
 
     def finalize_options(self):
         """Post-process options."""
@@ -114,7 +114,7 @@ class BehaveCommand(Command):
                 'No behave binary found in $PATH'
             )
 
-    def run(self):
+    def run_tests(self):
         """Run the command with subprocess."""
         if self.behave_bin:
             command = [self.behave_bin]
@@ -126,7 +126,7 @@ class BehaveCommand(Command):
 
         command.append(self.features)
         self.announce(
-            'Running linting command: {0}'.format(' '.join(command)),
+            'Running test command: {0}'.format(' '.join(command)),
             level=INFO)
         # Call the command. Use check_call to ensure an error is thrown if tests fail.
         subprocess.check_call(command)
@@ -162,3 +162,14 @@ def get_version(module):
         if match:
             return match.group(1)
         return None
+
+
+def parse_requirements(requirements_txt):
+    """
+    Parse the given requirements.txt file into a list of module names.
+
+    :param requirements_txt: Path to the requirements file
+    :return: Requirements as a list
+    """
+    with open(requirements_txt) as requirements_file:
+        return [l.strip() for l in requirements_file.readlines()]

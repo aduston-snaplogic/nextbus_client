@@ -5,7 +5,7 @@ Author: Adam Duston
 License: BSD-3-Clause
 """
 from setuptools import setup
-from setup_helpers import PylintCommand, BehaveCommand, get_version
+from setup_helpers import PylintCommand, BehaveCommand, get_version, parse_requirements
 
 VERSION = get_version('nextbus_client') or '0.0.0'
 
@@ -18,21 +18,14 @@ setup(
     license="BSD-3-Clause",
     packages=['nextbus_client'],
     include_package_data=True,
-    install_requires=[
-        'requests'
-    ],
-    tests_require=[
-        'behave',
-        'mock',
-        'requests-mock'
-    ],
+    install_requires=parse_requirements('requirements.txt'),
+    tests_require=parse_requirements('requirements-test.txt'),
     cmdclass={
         "test": BehaveCommand,
         "lint": PylintCommand
     },
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
-        'Framework :: Flask',
         'License :: OSI Approved :: BSD License',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 3.6',
