@@ -14,7 +14,7 @@ import pickle
 
 @given('a valid sample for the XML returned by command=agencyList')
 def step_get_agency_list_xml_data(context):
-    with open('./features/mocks/agency_list.xml', 'rb') as xml_file:
+    with open('./features/mocks/client/agency_list.xml', 'rb') as xml_file:
         context.agencyListXML = xml_file.read()
 
 
@@ -42,7 +42,7 @@ def step_agencies_have_data(context):
     
 @then('the returned agency list should match the sample data')
 def step_compare_agency_lists(context):
-    agency_list_sample = pickle.load(open('./features/mocks/agency_list.p', 'rb'))
+    agency_list_sample = pickle.load(open('./features/mocks/client/agency_list.p', 'rb'))
     set_a = set(a.tag for a in agency_list_sample)
     set_b = set(a.tag for a in context.agency_list)
     # Ensure the lists have the same contents.
@@ -53,7 +53,7 @@ def step_compare_agency_lists(context):
 
 @given('a valid sample for the XML returned by command=routeList&a=sf-muni')
 def step_get_route_list_xml_data(context):
-    with open('./features/mocks/route_list_sf-muni.xml', 'rb') as xml_file:
+    with open('./features/mocks/client/route_list_sf-muni.xml', 'rb') as xml_file:
         context.routeListXML = xml_file.read()
 
 
@@ -80,7 +80,7 @@ def step_routes_have_data(context):
 
 @then('the returned route list should match the sample data')
 def step_compare_route_lists(context):
-    route_list_sample = pickle.load(open('./features/mocks/route_list_sf-muni.p', 'rb'))
+    route_list_sample = pickle.load(open('./features/mocks/client/route_list_sf-muni.p', 'rb'))
     set_a = set(r.tag for r in route_list_sample)
     set_b = set(r.tag for r in context.route_list)
     # Ensure the lists have the same contents.
@@ -91,7 +91,7 @@ def step_compare_route_lists(context):
 
 @given('a valid sample for the XML returned by command=routeConfig&a=sf-muni&r=N')
 def step_get_route_config_xml_data(context):
-    with open('./features/mocks/route_config_sf-muni_N.xml', 'rb') as xml_file:
+    with open('./features/mocks/client/route_config_sf-muni_N.xml', 'rb') as xml_file:
         context.routeConfigXML = xml_file.read()
 
 
@@ -132,6 +132,6 @@ def step_route_has_data(context):
 
 @then('the returned RouteConfig should match the sample data')
 def step_compare_route_configs(context):
-    route_config_sample = pickle.load(open('./features/mocks/route_config_sf-muni_N.p', 'rb'))
+    route_config_sample = pickle.load(open('./features/mocks/client/route_config_sf-muni_N.p', 'rb'))
     # Ensure the lists have the same contents.
     assert route_config_sample.tag == context.route_config.tag
