@@ -14,4 +14,7 @@ from .route import Route
 
 __title__ = 'nextbus_client'
 __author__ = 'Adam Duston'
+__email__ = 'compybara@protonmail.com'
 __license__ = 'BSD-3-Clause'
+
+__all__ = ['agency', 'route', 'predictions', 'errors', 'client']

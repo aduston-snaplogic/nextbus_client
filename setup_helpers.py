@@ -173,3 +173,15 @@ def parse_requirements(requirements_txt):
     """
     with open(requirements_txt) as requirements_file:
         return [l.strip() for l in requirements_file.readlines()]
+
+
+def get_readme(readme_file='README.md'):
+    """
+    Read the readme_file in the current directory and return its contents for use as a long description in the setup.
+    :param readme_file: Name of the readme file. Defaults to README.md.
+    :return: Contents of the readme file
+    """
+    current_dir = path.abspath(path.dirname(__file__))
+    
+    with open(path.join(current_dir, 'README.md'), encoding='utf-8') as f:
+        return f.read()

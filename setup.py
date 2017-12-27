@@ -5,13 +5,15 @@ Author: Adam Duston
 License: BSD-3-Clause
 """
 from setuptools import setup
-from setup_helpers import PylintCommand, BehaveCommand, get_version, parse_requirements
+from setup_helpers import PylintCommand, BehaveCommand, get_version, get_readme, parse_requirements
 
 VERSION = get_version('nextbus_client') or '0.0.0'
 
 setup(
     name='nextbus_client',
     version=VERSION,
+    description='Python3 compatible client for the NextBus public XML feed',
+    long_description=get_readme(),
     author="Adam Duston",
     author_email="compybara@protonmail.com",
     url="https://github.com/compybara/nextbus_client",
@@ -25,7 +27,8 @@ setup(
         "lint": PylintCommand
     },
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Intended Audience :: Developers',
+        'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: BSD License',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 3.5',
