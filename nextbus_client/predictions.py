@@ -1,5 +1,5 @@
 """
-route.py - Class models a Route as returned by the Nexbus API's routeList command.
+predictions.py - Class models Predictions as returned by the Nexbus API's predictions command.
 
 Author: Adam Duston
 License: BSD-3-Clause
@@ -28,7 +28,6 @@ class Predictions(object):
         messages = None
         if 'xml_element' in kwargs:
             source = kwargs.get('xml_element')
-            print(source.text)
             validate_xml_element(source, self.ELEMENT_TAG)
             directions = [Direction(xml_element=e) for e in source.findall(Direction.ELEMENT_TAG)]
             messages = [Message(xml_element=e) for e in source.findall(Message.ELEMENT_TAG)]

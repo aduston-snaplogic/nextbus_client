@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright San Francisco Muni 2017.">
+<predictions agencyTitle="San Francisco Muni" routeTitle="N-Judah" routeTag="N" stopTitle="Civic Center Station Outbound" stopTag="6997">
+  <direction title="Outbound to Ocean Beach">
+  <prediction epochTime="1514411944294" seconds="859" minutes="14" isDeparture="false" dirTag="N____O_F00" vehicle="1464" vehiclesInConsist="2" block="9729" tripTag="8040852" />
+  <prediction epochTime="1514412315742" seconds="1231" minutes="20" isDeparture="false" affectedByLayover="true" dirTag="N____O_F00" vehicle="1497" vehiclesInConsist="2" block="9704" tripTag="8040848" />
+  <prediction epochTime="1514413069693" seconds="1985" minutes="33" isDeparture="false" affectedByLayover="true" dirTag="N____O_F00" vehicle="1496" vehiclesInConsist="2" block="9711" tripTag="8040854" />
+  <prediction epochTime="1514414172500" seconds="3088" minutes="51" isDeparture="false" affectedByLayover="true" dirTag="N____O_F00" vehicle="2006" block="9705" tripTag="8040849" />
+  <prediction epochTime="1514414478968" seconds="3394" minutes="56" isDeparture="false" affectedByLayover="true" delayed="true" slowness="0.395" dirTag="N____O_F00" vehicle="1473" vehiclesInConsist="2" block="9730" tripTag="8040856" />
+  </direction>
+<message text="Muni will&#10;operate on a&#10;Sunday Schedule&#10;on Mon 1/1/18" priority="Low"/>
+<message text="See something, Say something. Report unusual activity or objects." priority="Low"/>
+</predictions>
+<predictions agencyTitle="San Francisco Muni" routeTitle="N-Judah" routeTag="N" stopTitle="Carl St &amp; Cole St" stopTag="3909">
+  <direction title="Outbound to Ocean Beach">
+  <prediction epochTime="1514411316929" seconds="232" minutes="3" isDeparture="false" dirTag="N____O_F00" vehicle="1453" vehiclesInConsist="2" block="9728" tripTag="8040850" />
+  <prediction epochTime="1514411618506" seconds="534" minutes="8" isDeparture="false" dirTag="N____O_F00" vehicle="1460" block="9707" tripTag="8040844" />
+  <prediction epochTime="1514412535609" seconds="1451" minutes="24" isDeparture="false" dirTag="N____O_F00" vehicle="1464" vehiclesInConsist="2" block="9729" tripTag="8040852" />
+  <prediction epochTime="1514412907057" seconds="1822" minutes="30" isDeparture="false" affectedByLayover="true" dirTag="N____O_F00" vehicle="1497" vehiclesInConsist="2" block="9704" tripTag="8040848" />
+  <prediction epochTime="1514413661008" seconds="2576" minutes="42" isDeparture="false" affectedByLayover="true" dirTag="N____O_F00" vehicle="1496" vehiclesInConsist="2" block="9711" tripTag="8040854" />
+  </direction>
+<message text="Muni will&#10;operate on a&#10;Sunday Schedule&#10;on Mon 1/1/18" priority="Low"/>
+<message text="See something, Say something. Report unusual activity or objects." priority="Low"/>
+</predictions>
+</body>
