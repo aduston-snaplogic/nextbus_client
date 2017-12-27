@@ -1,8 +1,5 @@
 """
 route_config.py - Class models a RouteConfig and related objects from the NextBus API
-
-Author: Adam Duston
-License: BSD-3-Clause
 """
 from .utilities import validate_xml_element
 

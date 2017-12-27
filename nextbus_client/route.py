@@ -1,8 +1,5 @@
 """
 route.py - Class models a Route as returned by the Nexbus API's routeList command.
-
-Author: Adam Duston
-License: BSD-3-Clause
 """
 from .utilities import validate_xml_element
 
