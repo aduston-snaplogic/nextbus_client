@@ -4,13 +4,13 @@ Inititalization details for the nextbus_client package
 Author: Adam Duston
 License: BSD-3-Clause
 """
-from nextbus_client import route_config
-from nextbus_client import predictions
-from nextbus_client import errors
+from . import agency
+from . import route
+from . import route_config
+from . import predictions
+from . import errors
 from .version import __version__
 from .client import Client
-from .agency import Agency
-from .route import Route
 
 __title__ = 'nextbus_client'
 __author__ = 'Adam Duston'

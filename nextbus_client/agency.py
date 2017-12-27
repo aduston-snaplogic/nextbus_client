@@ -1,8 +1,5 @@
 """
-agency.py - Class models an Agency from the NextBus API
-
-Author: Adam Duston
-License: BSD-3-Clause
+agency.py - Model for an Agency from the NextBus API
 """
 from .utilities import validate_xml_element
 

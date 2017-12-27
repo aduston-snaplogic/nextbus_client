@@ -1,65 +1,34 @@
 """
-errors.py - Define custom errors for the client.
-
-Author: Adam Duston
-License: BSD-3-Clause
+errors.py - Define custom errors for the client. Errors are parsed from the XML returned by the NextBus service.
+            Not all errors are documented so this may not detect all possible errors from the API service.
 """
 import re
 
 # In the event of an error the nextbus api may return a 200 OK with some error message in the XML attributes.
 # Define some regular expressions for parsing the error messages to determine which error was sent back.
-BAD_AGENCY_REGEXP = re.compile(r"\\n\s+Agency\sparameter\s+\"a=(.+)\"\sis\snot\svalid.\\n")
+BAD_AGENCY_REGEXP = re.compile(r"\s+Agency\s+parameter\s+\"a=(.+)\"\s+is\s+not\s+valid\.\s+")
 
-BAD_ROUTE_FOR_AGENCY_REGEXP = re.compile(r"\n\s+Could not get route \"(.+)\" for agency tag "
-                                         r"\"(.+)\".\s+\\nOne of the tags could be bad.\\n")
+BAD_ROUTE_FOR_AGENCY_REGEXP = re.compile(r"\s+Could\s+not\s+get\s+route\s+\"(.+)\"\s+for\s+agency\s+tag\s+"
+                                         r"\"(.+)\".\s+One\s+of\s+the\s+tags\s+could\s+be\s+bad\.\s+")
 
-BAD_STOP_FOR_ROUTE_REGEXP = re.compile(r"\\n\s+For\sagency=(.+)\sstop\ss=(.+)\sis\son\snone\sof\sthe\sdirections\sfor\s"
-                                       r"r=(.+)\sso\scannot\sdetermine\swhich\sstop\sto\sprovide\sdata\sfor.\\n")
-
-
-BAD_STOP_ID_INTEGER_REGEXP = re.compile(r"\\n\s+stopId \"(.+)\" is not a valid stop id integer\\n")
-BAD_STOP_ID_FOR_AGENCY = re.compile(r"\\n\s+stopId=(.+)\s+is not valid for agency=(.+)\\n")
-MISSING_QUERY_PARAMETER = re.compile(r"\\n\s+(.+)\sparameter\s\"(.+)\"\smust\sbe\specified\sin\squery\sstring\\n")
+BAD_STOP_FOR_ROUTE_REGEXP = re.compile(r"\s+For\s+agency=(.+)\s+stop\s+s=(.+)\s+is\s+on\s+none\s+of\s+the\s+"
+                                       r"directions\s+for\s+r=(.+)\s+so\s+cannot\s+determine\s+which\s+stop\s+to\s+"
+                                       r"provide\s+data\s+for\.\s+")
 
 
-def parse_error_xml(error_xml):
+BAD_STOP_ID_INTEGER_REGEXP = re.compile(r"\s+stopId \"(.+)\" is not a valid stop id integer\s+")
+BAD_STOP_ID_FOR_AGENCY = re.compile(r"\s+stopId=(.+)\s+is not valid for agency=(.+)\s+")
+MISSING_QUERY_PARAMETER = re.compile(r"\s+(.+)\s+parameter\s+\"(.+)\"\s+must\s+be\s+specified\s+in\s+query\s+string\s+")
+
+
+class UnknownNextBusError(Exception):
     """
-    The NextBus API will often return 200 OK with the error details in the body. Parse these and raise the
-    appropriate exceptions.
-
-    :param error_xml: The XML ElementTree for the Error.
+    Generic exception raised when an Error element is returned, but it isn't one of the ones defined
+    in this module.
     """
-
-    # Check if a query parameter was missing.
-    match = MISSING_QUERY_PARAMETER.match(error_xml.text)
-    if match:
-        raise MissingQueryParameterError()
-    # Check if the error is an invalid agency tag
-    match = BAD_AGENCY_REGEXP.match(error_xml.text)
-    if match:
-        raise InvalidAgencyError(agency=match.group(1))
-
-    # Check if the error is a bad route for the given agency
-    match = BAD_ROUTE_FOR_AGENCY_REGEXP.match(error_xml.text)
-    if match:
-        raise InvalidRouteForAgencyError(route=match.group(1), agency=match.group(2))
-
-    # Check if the error is a bad stop ID for the given route
-    match = BAD_STOP_FOR_ROUTE_REGEXP.match(error_xml.text)
-    if match:
-        raise InvalidStopForRouteError(agency=match.group(1), stop=match.group(2), route=match.group(3))
-
-    # Check if the error is a bad stop (non-integer) stop ID
-    match = BAD_STOP_ID_INTEGER_REGEXP.match(error_xml.text)
-    if match:
-        raise InvalidStopIdError(stop_id=match.group(1))
-
-    # Check if the error is a bad stop for a given agency.
-    print(error_xml.text)
-    match = BAD_STOP_ID_FOR_AGENCY.match(error_xml.text)
-    print(match)
-    if match:
-        raise InvalidStopIdForAgencyError(stop_id=match.group(1), agency=match.group(2))
+    def __init__(self, element):
+        message = "Nextbus service returned an error: {0}".format(element.text)
+        super().__init__(message)
 
 
 class MissingQueryParameterError(Exception):
