@@ -1,8 +1,5 @@
 """
 Inititalization details for the nextbus_client package
-
-Author: Adam Duston
-License: BSD-3-Clause
 """
 from . import agency
 from . import route

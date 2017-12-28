@@ -1,8 +1,5 @@
 """
 setup_helpers.py - Define some custom commands and helper methods for setup.py
-
-Author: Adam Duston
-License: BSD-3-Clause
 """
 import subprocess
 import re

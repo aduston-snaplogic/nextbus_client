@@ -1,8 +1,5 @@
 """
 step_client.py - Behave test steps for the client module
-
-Author: Adam Duston
-License: BSD-3-Clause
 """
 from behave import given, when, then
 import requests_mock

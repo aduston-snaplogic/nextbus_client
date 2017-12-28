@@ -1,8 +1,5 @@
 """
 setup.py - Setup script for the nextbus_client module
-
-Author: Adam Duston
-License: BSD-3-Clause
 """
 from setuptools import setup
 from setup_helpers import PylintCommand, BehaveCommand, get_version, get_readme, parse_requirements
