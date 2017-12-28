@@ -1,8 +1,5 @@
 """
 predictions.py - Class models Predictions as returned by the Nexbus API's predictions command.
-
-Author: Adam Duston
-License: BSD-3-Clause
 """
 from .utilities import validate_xml_element
 
