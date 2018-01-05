@@ -8,7 +8,7 @@ pipeline {
             label "python35"
           }
           steps {
-            sh './jenkins.sh -p 3.5.4 install'
+            sh './jenkins.sh --python=3.5.4 install'
           }
         }
         stage('Install with Python 3.6') {
@@ -16,7 +16,7 @@ pipeline {
             label "python36"
           }
           steps {
-            sh './jenkins.sh -p 3.6.4 install'
+            sh './jenkins.sh --python=3.6.4 install'
           }
         }
       }
@@ -28,7 +28,7 @@ pipeline {
             label "python35"
           }
           steps {
-            sh './jenkins.sh -p 3.5.4 lint'
+            sh './jenkins.sh --python=3.5.4 lint'
           }
         }
         stage('Lint with Python 3.6') {
@@ -36,7 +36,7 @@ pipeline {
             label "python36"
           }
           steps {
-            sh './jenkins.sh -p 3.6.4 lint'
+            sh './jenkins.sh --python=3.6.4 lint'
           }
         }
       }
@@ -48,7 +48,7 @@ pipeline {
             label "python35"
           }
           steps {
-            sh './jenkins.sh -p 3.5.4 test'
+            sh './jenkins.sh --python=3.5.4 test'
           }
         }
         stage('Run tests Python 3.6') {
@@ -56,7 +56,7 @@ pipeline {
             label "python36"
           }
           steps {
-            sh './jenkins.sh -p 3.6.4 test'
+            sh './jenkins.sh --python=3.6.4 test'
           }
         }
       }

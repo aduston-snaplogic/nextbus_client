@@ -10,7 +10,7 @@ function usage() {
     echo -e "Run the given action with the specified Python version (default is 3.6.4)\n"
     echo -e "./jenkins.sh [options] <action>"
     echo -e "\t-h --help"
-    echo -e "\t-p --python=<version>\n"
+    echo -e "\t--python=<version>\n"
 }
 
 function install() {
@@ -35,7 +35,7 @@ while [ "$1" != "" ]; do
             usage
             exit
             ;;
-        -p | --python)
+        --python)
             PYTHON_VERSION=${VALUE}
             shift
             ;;
