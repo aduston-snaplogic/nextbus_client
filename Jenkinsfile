@@ -1,7 +1,6 @@
 pipeline {
   agent none
   stages {
-    stage('Install') {
       parallel {
         stage('Install with Python 3.5') {
           agent {
@@ -19,10 +18,6 @@ pipeline {
             sh './jenkins.sh --python=3.6.4 install'
           }
         }
-      }
-    }
-    stage('Lint') {
-      parallel {
         stage('Lint with Python 3.5') {
           agent {
             label "python35"
@@ -39,10 +34,6 @@ pipeline {
             sh './jenkins.sh --python=3.6.4 lint'
           }
         }
-      }
-    }
-    stage('Test') {
-      parallel {
         stage('Run tests with Python 3.5') {
           agent {
             label "python35"
