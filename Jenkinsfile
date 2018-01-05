@@ -1,54 +1,53 @@
 pipeline {
   agent none
   stages {
-      parallel {
-        stage('Install with Python 3.5') {
-          agent {
-            label "python35"
-          }
-          steps {
-            sh './jenkins.sh --python=3.5.4 install'
-          }
+    parallel {
+      stage('Install with Python 3.5') {
+        agent {
+          label "python35"
         }
-        stage('Install with Python 3.6') {
-          agent {
-            label "python36"
-          }
-          steps {
-            sh './jenkins.sh --python=3.6.4 install'
-          }
+        steps {
+          sh './jenkins.sh --python=3.5.4 install'
         }
-        stage('Lint with Python 3.5') {
-          agent {
-            label "python35"
-          }
-          steps {
-            sh './jenkins.sh --python=3.5.4 lint'
-          }
+      }
+      stage('Install with Python 3.6') {
+        agent {
+          label "python36"
         }
-        stage('Lint with Python 3.6') {
-          agent {
-            label "python36"
-          }
-          steps {
-            sh './jenkins.sh --python=3.6.4 lint'
-          }
+        steps {
+          sh './jenkins.sh --python=3.6.4 install'
         }
-        stage('Run tests with Python 3.5') {
-          agent {
-            label "python35"
-          }
-          steps {
-            sh './jenkins.sh --python=3.5.4 test'
-          }
+      }
+      stage('Lint with Python 3.5') {
+        agent {
+          label "python35"
         }
-        stage('Run tests Python 3.6') {
-          agent {
-            label "python36"
-          }
-          steps {
-            sh './jenkins.sh --python=3.6.4 test'
-          }
+        steps {
+          sh './jenkins.sh --python=3.5.4 lint'
+        }
+      }
+      stage('Lint with Python 3.6') {
+        agent {
+          label "python36"
+        }
+        steps {
+          sh './jenkins.sh --python=3.6.4 lint'
+        }
+      }
+      stage('Run tests with Python 3.5') {
+        agent {
+          label "python35"
+        }
+        steps {
+          sh './jenkins.sh --python=3.5.4 test'
+        }
+      }
+      stage('Run tests Python 3.6') {
+        agent {
+          label "python36"
+        }
+        steps {
+          sh './jenkins.sh --python=3.6.4 test'
         }
       }
     }
