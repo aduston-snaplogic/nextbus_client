@@ -14,16 +14,16 @@ function usage() {
 }
 
 function install() {
-    ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/pip3 install -r requirements-test.txt
-    ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/python3 setup.py install
+    ${PYTHON_BIN_DIR}//pip3 install -r requirements-test.txt
+    ${PYTHON_BIN_DIR}/python3 setup.py install
 }
 
 function lint() {
-  ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/python3 setup.py lint
+  ${PYTHON_BIN_DIR}/python3 setup.py lint --pylint-bin=${PYTHON_BIN_DIR}/pylint
 }
 
 function run_tests() {
-    ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/python3 setup.py test
+    ${PYTHON_BIN_DIR}/python3 setup.py test --behave-bin=${PYTHON_BIN_DIR}/behave
 }
 
 ACTION=""
@@ -45,6 +45,8 @@ while [ "$1" != "" ]; do
             ;;
     esac
 done
+
+PYTHON_BIN_DIR=${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin
 
 case ${ACTION} in
     install)
