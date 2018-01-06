@@ -45,7 +45,7 @@ while [ "$1" != "" ]; do
             ;;
     esac
 done
-echo ${ACTION}
+
 case ${ACTION} in
     install)
         install
