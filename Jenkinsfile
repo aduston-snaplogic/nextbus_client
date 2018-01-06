@@ -1,4 +1,5 @@
 pipeline {
+  agent none
   stages {
     stage('Install with Python 3.5') {
       agent { label 'python35' }
