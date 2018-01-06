@@ -1,47 +1,24 @@
+def pythonVersions = ["3.5.4", "3.6.4"]
 pipeline {
-  agent none
-  stages {
-    stage('Python 3.5') {
-      agent {
-        label "python35"
-      }
-      stages {
-        stage('Install with Python 3.5') {
-          steps {
-            sh './jenkins.sh -p 3.5.4 install'
-          }
-        }
-        stage('Lint with Python 3.5') {
-          steps {
-            sh './jenkins.sh -p 3.5.4 lint'
-          }
-        }
-        stage('Test with Python 3.5') {
-          steps {
-            sh './jenkins.sh -p 3.5.4 install'
-          }
-        }
-      }
+  for(int i=0; i < pythonVersions.size(); i++) {
+    def pythonVersion = pythonVersions[i]
+    agent {
+      label "python-${pythonVersion}"
     }
-    stage('Python 3.6') {
-      agent {
-        label "python35"
+    stages {
+      stage("Install on Python ${pythonVersion}") {
+        steps {
+          sh "./jenkins.sh -p ${pythonVersion} install"
+        }
       }
-      stages {
-        stage('Install with Python 3.6') {
-          steps {
-            sh './jenkins.sh -p 3.6.4 install'
-          }
+      stage("Lint with Python ${pythonVersion}") {
+        steps {
+          sh "./jenkins.sh -p ${pythonVersion} lint"
         }
-        stage('Lint with Python 3.6') {
-          steps {
-            sh './jenkins.sh -p 3.6.4 lint'
-          }
-        }
-        stage('Test with Python 3.6') {
-          steps {
-            sh './jenkins.sh -p 3.6.4 install'
-          }
+      }
+      stage("Test with Python ${pythonVersion}") {
+        steps {
+          sh './jenkins.sh -p ${pythonVersion} install'
         }
       }
     }
