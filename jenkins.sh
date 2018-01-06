@@ -14,6 +14,7 @@ function usage() {
 }
 
 function install() {
+    ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/pip3 install -r requirements-test.txt
     ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/python3 setup.py install
 }
 
@@ -22,7 +23,6 @@ function lint() {
 }
 
 function run_tests() {
-    ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/pip3 install -r requirements-test.txt
     ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/python3 setup.py test
 }
 
