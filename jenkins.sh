@@ -18,7 +18,7 @@ function install() {
 }
 
 function lint() {
-  ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/python3 setup.py install
+  ${PYTHON_TOOLS_DIR}/${PYTHON_VERSION}/bin/python3 setup.py lint
 }
 
 function run_tests() {
@@ -45,7 +45,7 @@ while [ "$1" != "" ]; do
             ;;
     esac
 done
-
+echo ${ACTION}
 case ${ACTION} in
     install)
         install

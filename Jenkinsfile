@@ -16,7 +16,7 @@ pipeline {
     stage('Test with Python 3.5') {
       agent { label 'python35' }
       steps {
-        sh './jenkins.sh -p 3.5.4 install'
+        sh './jenkins.sh -p 3.5.4 test'
       }
     }
     stage('Install with Python 3.6') {
@@ -34,7 +34,7 @@ pipeline {
     stage('Test with Python 3.6') {
       agent { label 'python36' }
       steps {
-        sh './jenkins.sh -p 3.6.4 install'
+        sh './jenkins.sh -p 3.6.4 test'
       }
     }
   }
