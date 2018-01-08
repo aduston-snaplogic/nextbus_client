@@ -1,6 +1,6 @@
-# nextbus_client [![Build Status](https://travis-ci.org/compybara/nextbus_client.svg?branch=master)](https://travis-ci.org/compybara/nextbus_client)
+# nextbus_client 
 
-This module attempts to implement a native Python 3 client for interacting with the Nexbus service's Public XML Feed.
+This module implements a native Python 3 client for interacting with the Nexbus service's Public XML Feed.
 
 It provides a client class which implements the available commands, and a number of classes to model the data returned 
 by the XML feed as Python objects. Each object provides a `to_dict()` method to allow for easy conversion of the XML
@@ -8,6 +8,18 @@ data to JSON.
 
 This module was developed following the [specification document](https://www.nextbus.com/xmlFeedDocs/NextBusXMLFeed.pdf)
 provided by the Nextbus service. 
+
+## Build Status
+
+
+Travis
+
+[![Build Status](https://travis-ci.org/compybara/nextbus_client.svg?branch=master)](https://travis-ci.org/compybara/nextbus_client)
+
+
+Jenkins
+
+[![Build Status](https://jenkins.capybara.computer/buildStatus/icon?job=nextbus_client/master)](https://jenkins.capybara.computer/job/nextbus_client/job/master/)
 
 ## Getting Started
 
@@ -79,7 +91,7 @@ A custom linter configuration is included in this repo as`.pylintrc`. You can sp
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on the code of conduct for contributing to this repository.
 
 ## Versioning
 
